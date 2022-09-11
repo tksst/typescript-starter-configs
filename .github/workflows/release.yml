@@ -1,0 +1,42 @@
+name: Test and Release
+on:
+  push:
+    branches:
+      - master
+      - alpha
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+  release:
+    needs: test
+    permissions:
+      issues: write
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+        with:
+          # fetch all history
+          fetch-depth: 0
+
+      - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3.4.1
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Enable corepack
+        run: corepack enable npm
+
+      - name: Print npm version
+        run: npm --version
+
+      - run: npm ci
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
