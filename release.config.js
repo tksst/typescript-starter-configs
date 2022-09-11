@@ -1,18 +1,7 @@
 const branch = process.env.GITHUB_REF_NAME;
 
-const commitAnalyzer = [
-    "@semantic-release/commit-analyzer",
-    {
-        preset: "angular",
-        releaseRules: [{ type: "build", scope: "deps", release: "patch" }],
-        parserOpts: {
-            noteKeywords: ["BREAKING CHANGE", "BREAKING CHANGES"],
-        },
-    },
-];
-
 const pluginsRelease = [
-    commitAnalyzer,
+    "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/npm",
@@ -21,7 +10,7 @@ const pluginsRelease = [
 ];
 
 const plubinsPreRelease = [
-    commitAnalyzer,
+    "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     "@semantic-release/github",
