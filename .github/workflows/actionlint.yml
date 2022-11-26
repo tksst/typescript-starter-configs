@@ -1,0 +1,14 @@
+name: Actionlint
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/**"
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+
+jobs:
+  actionlint:
+    uses: tksst/github-actions-workflows/.github/workflows/actionlint.yml@60c5a837e7d460d37847306dd77c8df8ab7d06c6
