@@ -1,7 +1,4 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: test
+name: Lint
 
 on:
   workflow_call:
@@ -13,22 +10,11 @@ on:
       - alpha
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3.5.1
-        with:
-          node-version: 18
-          cache: npm
-
-      - name: Enable corepack
-        run: corepack enable npm
-
-      - name: Print npm version
-        run: npm --version
-
-      - run: npm ci
-      - run: npm run lint
+  lint:
+    name: Lint
+    uses: tksst/github-actions-workflows/.github/workflows/nodejs-pnpm.yml@60c5a837e7d460d37847306dd77c8df8ab7d06c6
+    with:
+      build: false
+      test: false
+      os: '["ubuntu-latest"]'
+      node-versions: "[18]"

@@ -21,7 +21,7 @@
     "./tsconfig.json": "./tsconfig.json"
   },
   "scripts": {
-    "fix": "npm run lint -- --write",
+    "fix": "pnpm lint --write",
     "lint": "prettier -l ."
   },
   "devDependencies": {
@@ -31,5 +31,5 @@
     "prettier": "2.7.1",
     "semantic-release": "19.0.5"
   },
-  "packageManager": "npm@8.19.1"
+  "packageManager": "pnpm@7.17.0"
 }
