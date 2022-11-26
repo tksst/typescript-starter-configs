@@ -22,7 +22,7 @@
   },
   "scripts": {
     "fix": "pnpm lint --write",
-    "lint": "prettier -l ."
+    "lint": "prettier --cache -l ."
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
