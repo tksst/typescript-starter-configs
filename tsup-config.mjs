@@ -1,7 +1,5 @@
 const common = {
     sourcemap: true,
-    minifyWhitespace: true,
-    minifySyntax: true,
     target: "node14",
     splitting: false,
 };
