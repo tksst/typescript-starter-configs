@@ -16,6 +16,7 @@
     "tss-rmrf": "./scripts/rmrf.mjs"
   },
   "exports": {
+    "./release.config.js": "./release.config.js",
     "./jest.config.cjs": "./jest.config.cjs",
     "./tsup-config.mjs": "./tsup-config.mjs",
     "./tsconfig.json": "./tsconfig.json"
