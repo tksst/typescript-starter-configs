@@ -17,6 +17,7 @@ module.exports = {
     collectCoverage: true,
     errorOnDeprecated: true,
     resetMocks: true,
+    reporters: ["default", "github-actions"],
     moduleNameMapper: {
         "^(\\.{1,2}/.*)\\.js$": "$1",
     },
